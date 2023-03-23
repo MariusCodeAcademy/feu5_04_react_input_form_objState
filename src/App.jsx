@@ -8,7 +8,7 @@ function App() {
     <div className='container'>
       <h1>Inputs</h1>
 
-      <InputBlock />
+      {/* <InputBlock /> */}
       <PassBlock />
     </div>
   );
