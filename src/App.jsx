@@ -8,7 +8,7 @@ function App() {
   return (
     <div className='container'>
       <h1>Inputs</h1>
-      <LoginForm />
+      {/* <LoginForm /> */}
       {/* <InputBlock /> */}
       {/* <PassBlock /> */}
     </div>
