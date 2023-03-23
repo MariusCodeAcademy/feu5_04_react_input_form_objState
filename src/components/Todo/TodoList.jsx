@@ -10,6 +10,12 @@ const initTodos = [
   { id: '234', title: 'Learn React', isDone: true },
   { id: '435345', title: 'Watch tv', isDone: false },
 ];
+const poPaspaudimoAndMall = [
+  { id: '1', title: 'Buy milk', isDone: false },
+  { id: '2', title: 'Go to Mall', isDone: false },
+  { id: '234', title: 'Learn React', isDone: true },
+  { id: '435345', title: 'Watch tv', isDone: false },
+];
 
 function TodoList() {
   //
@@ -43,6 +49,19 @@ function TodoList() {
   function toggleTodo(idOfTodoToToggle) {
     // setMainTodoArr(paduoti nemodifikuota mainTodoArr versija kurioje objektas kurio
     // id yra idOfTodoToToggle, jo isDone boolean reiksme pavarsta i priesinga )
+    console.log('toggleTodo ===', idOfTodoToToggle);
+    const pakeistasMainArr = mainTodoArr.map((tObj) => {
+      if (tObj.id === idOfTodoToToggle) {
+        return { ...tObj, isDone: !tObj.isDone };
+        // tObj.isDone = !tObj.isDone;
+        // return tObj;
+      } else {
+        return tObj;
+      }
+    });
+    console.log('pakeistasMainArr ===', pakeistasMainArr);
+    setMainTodoArr(pakeistasMainArr);
+    console.log('initTodos ===', initTodos);
   }
 
   return (
@@ -61,7 +80,10 @@ function TodoList() {
 
       <ul className='todos'>
         {mainTodoArr.map((tObj) => (
-          <li key={tObj.id}>{tObj.title}</li>
+          <li key={tObj.id}>
+            {tObj.title}{' '}
+            <button onClick={() => toggleTodo(tObj.id)}>{tObj.isDone && 'un'}done</button>
+          </li>
         ))}
       </ul>
     </div>
