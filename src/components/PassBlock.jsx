@@ -9,7 +9,10 @@ export default function PassBlock() {
   }
 
   function toggleShowPass() {
-    setShowPass(true);
+    setShowPass((prevShowPass) => {
+      // logika
+      return !prevShowPass;
+    });
   }
 
   return (
@@ -18,11 +21,11 @@ export default function PassBlock() {
       <input
         value={passValue}
         onChange={inputChangeHandler}
-        type='password'
+        type={!showPass ? 'password' : 'text'}
         placeholder='nesakyk niekam'
       />
       <br />
-      {!showPass && <button onClick={toggleShowPass}>parodyti slaptazodi</button>}
+      <button onClick={toggleShowPass}>pa{!showPass ? 'rodyti' : 'slepti'} slaptazodi</button>
       {showPass && <p>Ivesta: {passValue}</p>}
     </div>
   );
