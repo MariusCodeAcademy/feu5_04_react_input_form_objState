@@ -9,7 +9,8 @@ function LoginForm() {
   const [emailVal, setEmailVal] = useState('james@bond.com');
   const [passValue, setPassValue] = useState('');
   const [showOutputs, setShowOutputs] = useState(false);
-  const [formSuccess, setFormSuccess] = useState(false);
+  const [formSent, setFormSent] = useState(false);
+  const [isThereAnError, setIsThereAnError] = useState(false);
 
   function handleEmailInput(e) {
     setEmailVal(e.target.value);
@@ -27,16 +28,19 @@ function LoginForm() {
     const emailAtitinka = prisijungimas.email === emailVal;
     const passAtitinka = prisijungimas.password === passValue;
     if (emailAtitinka && passAtitinka) {
-      setFormSuccess(true);
+      setFormSent(true);
+    } else {
+      // neatitinka email or pass
+      setIsThereAnError(true);
     }
     // jei atitinka keisim formSuccess i true
   }
 
   return (
     <div>
-      {formSuccess && <h3>Isiusta sekmingai</h3>}
-      {!formSuccess && <h3>Login here</h3>}
-      {!formSuccess && (
+      {formSent && <h3>Isiusta sekmingai</h3>}
+      {!formSent && <h3>Login here</h3>}
+      {!formSent && (
         <form onSubmit={handleSubmit}>
           <input value={emailVal} onChange={handleEmailInput} type='text' placeholder='email' />
           <input
@@ -45,6 +49,7 @@ function LoginForm() {
             type='password'
             placeholder='password'
           />
+          {isThereAnError && <p className='error'>neatitinka email or pass</p>}
           <button type='submit'>Login</button>
         </form>
       )}
