@@ -6,7 +6,7 @@ import { useState } from 'react';
 
 const initTodos = [
   { id: '1', title: 'Buy milk', isDone: false },
-  { id: '12', title: 'Go to Mall', isDone: false },
+  { id: '2', title: 'Go to Mall', isDone: true },
   { id: '234', title: 'Learn React', isDone: true },
   { id: '435345', title: 'Watch tv', isDone: false },
 ];
@@ -36,6 +36,15 @@ function TodoList() {
     setMainTodoArr((prevMainTodoArr) => [...prevMainTodoArr, newTodoObj]);
   }
 
+  function deleteTodo(idOfTodoToDelete) {
+    // setMainTodoArr(paduoti masyvo kopija kurioje nera elemento kurio id idOfTodoToDelete)
+    // p.s. filter()
+  }
+  function toggleTodo(idOfTodoToToggle) {
+    // setMainTodoArr(paduoti nemodifikuota mainTodoArr versija kurioje objektas kurio
+    // id yra idOfTodoToToggle, jo isDone boolean reiksme pavarsta i priesinga )
+  }
+
   return (
     <div>
       <h3>TodoList</h3>
@@ -60,3 +69,6 @@ function TodoList() {
 }
 
 export default TodoList;
+
+// kai generuojam  <li key={tObj.id}>{tObj.title}</li>
+// jei jis yra done, tai pridedam klase, kuri ji perbraukia ir padaro pilku
