@@ -80,7 +80,7 @@ function TodoList() {
 
       <ul className='todos'>
         {mainTodoArr.map((tObj) => (
-          <li key={tObj.id}>
+          <li key={tObj.id} className={tObj.isDone && 'done'}>
             {tObj.title}{' '}
             <button onClick={() => toggleTodo(tObj.id)}>{tObj.isDone && 'un'}done</button>
           </li>

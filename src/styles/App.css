@@ -6,3 +6,7 @@ h3 {
   color: tomato;
   padding: 1.5rem;
 }
+.done {
+  color: gray;
+  text-decoration: line-through;
+}
